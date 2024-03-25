@@ -4,18 +4,11 @@
   width: 40px;
   height: 40px;
   font-size: 1.3rem;
-  cursor: pointer;
   user-select: none;
   font-size: 2rem;
 }
 
-.board-cell:active {
-  border: none;
-  width: 49px;
-  height: 50px;
-}
-
-.cell-active {
+.cell-active, .board-cell:active {
   border: 1px solid #b0b0b0;
   width: 48px;
   height: 48px;
