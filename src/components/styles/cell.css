@@ -1,0 +1,15 @@
+.board-cell {
+  background-color: #c0c0c0;
+  border: 5px outset #e0e0e0;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.board-cell:active {
+  border: none;
+  width: 49px;
+  height: 50px;
+}

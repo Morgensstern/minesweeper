@@ -1,0 +1,12 @@
+.board {
+  background-color: #c0c0c0;
+  display: flex;
+  border: 10px inset #e0e0e0;
+  width: fit-content;
+  margin: 20px;
+}
+
+.board-row {
+  justify-content: center;
+  text-align: center;
+}
