@@ -1,4 +1,5 @@
-import createBoard from '../utils/creatboard'
+import createBoard from '../utils/creatboard';
+import reveal from '../utils/reveal';
 import { useEffect, useState } from 'react';
 
 import Cell from './cell';
@@ -24,6 +25,11 @@ const Board = () => {
       newGrid[i][j].flagged = false;
     setGrid(newGrid);
   }
+
+  const handleLeftClick = (i: number, j: number) =>  {
+    const newGrid = reveal(grid, i, j);
+    setGrid(newGrid);
+  }
   
   
   return (
@@ -32,7 +38,7 @@ const Board = () => {
         return (
           <div className="board-row">
             {row.map((cell, j: number) => {
-              return <Cell onRightClick={(e) => handleRightClick(e, i, j)} details={ { cell, j, i } } />; // TODO: Swap it to the cell component later
+              return <Cell onLeftClick={(e) => handleLeftClick(i, j)} onRightClick={(e) => handleRightClick(e, i, j)} details={ { cell, j, i } } />; // TODO: Swap it to the cell component later
             })}
           </div>);
       })}
