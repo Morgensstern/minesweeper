@@ -1,2 +1,2 @@
 # minesweeper
-A minesweeper React.js project
+A minesweeper TypeScript + Vite React.js project
