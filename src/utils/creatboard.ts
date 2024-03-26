@@ -49,7 +49,7 @@ const notifyNeighbours = (board: Cell[][], pos: {x: number, y: number}, maxWidth
     const posY = neighbours[i].y;
     if (posX >= 0 && posX < maxWidth &&
         posY >= 0 && posY < maxHeight && board[posY][posX].value != 'X')
-          board[posY][posX].value += 1;
+          board[posY][posX].value += 1; // stfu i checked if it is a number
   }
 }
 

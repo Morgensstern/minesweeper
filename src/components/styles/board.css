@@ -10,3 +10,10 @@
   justify-content: center;
   text-align: center;
 }
+
+.board-status {
+  margin-left: 20px;
+  color: red;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
