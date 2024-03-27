@@ -1,10 +1,9 @@
-import { MouseEventHandler } from 'react';
 import './styles/cell.css';
 
 interface Props {
   details: {cell: any, x: number, y: number},
-  onRightClick: (e: MouseEventHandler) => void,
-  onLeftClick: (e: MouseEventHandler) => void
+  onRightClick: () => void,
+  onLeftClick: () => void
 }
 
 const colorPalette = [
@@ -20,7 +19,7 @@ const colorPalette = [
 
 const Cell = ({details, onRightClick, onLeftClick}: Props) => {
   return (
-    <div style={details.cell.value != "X" && details.cell.value != 0 && details.cell.revealed ? {"color": colorPalette[details.cell.value]} : { "color": "black"} } onClick={() => onLeftClick} onContextMenu={() => onRightClick} className={"board-cell " + (details.cell.revealed ? "cell-active" : "")}>
+    <div style={details.cell.value != "X" && details.cell.value != 0 && details.cell.revealed ? {"color": colorPalette[details.cell.value]} : { "color": "black"} } onClick={() => onLeftClick()} onContextMenu={(e) => { onRightClick(); e.preventDefault(); }} className={"board-cell " + (details.cell.revealed ? "cell-active" : "")}>
       {details.cell.revealed ? (details.cell.value === 0 ? "" : details.cell.value) : (details.cell.flagged ? "F" : "")}
     </div>
   );

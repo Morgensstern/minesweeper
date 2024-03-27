@@ -65,7 +65,7 @@ const createBoard = (width: number, height: number, minesAmount: number) => {
   for (let i = 0; i < height; i++) {
     board[i] = new Array(width);
   }
-  
+
   generateBoard(board, width, height);
 
   const minesPositions: {x: number, y: number}[] = generateMinefield(board, minesAmount, width, height);
