@@ -20,9 +20,7 @@ const reveal = (oldGrid: [][], i: number, j: number): {grid: [][], status: strin
   } 
 
   // if not a mine, iterate throgh neighbours
-  for (let z = 0; z < neighbours.length; z++) {
-    newGrid = revealNeighbours(newGrid, neighbours); 
-  }
+  newGrid = revealNeighbours(newGrid, neighbours); 
 
   return {grid: newGrid, status: "O"};
 }

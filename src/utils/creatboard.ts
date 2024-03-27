@@ -1,5 +1,5 @@
 interface Cell {
-  value: string | number,
+  value: any,
   x: number,
   y: number,
   flagged: boolean,
@@ -48,9 +48,15 @@ const notifyNeighbours = (board: Cell[][], pos: {x: number, y: number}, maxWidth
     const posX = neighbours[i].x;
     const posY = neighbours[i].y;
     if (posX >= 0 && posX < maxWidth &&
-        posY >= 0 && posY < maxHeight && board[posY][posX].value != 'X')
-          board[posY][posX].value += 1; // stfu i checked if it is a number
+        posY >= 0 && posY < maxHeight)
+      if (isNumber(board[posY][posX].value))
+        board[posY][posX].value += 1;
+          
   }
+}
+
+function isNumber(val: string | number): val is number {
+    return typeof val === 'number';
 }
 
 const createBoard = (width: number, height: number, minesAmount: number) => {
