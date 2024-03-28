@@ -11,9 +11,16 @@
   text-align: center;
 }
 
-.board-status {
+.board-status-go {
   margin-left: 20px;
   color: red;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.board-status-win {
+  margin-left: 20px;
+  color: green;
   font-weight: bold;
   font-size: 1.4rem;
 }

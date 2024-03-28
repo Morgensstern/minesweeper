@@ -1,11 +1,14 @@
-// TODO: reveal function that reavels nieghbours and breaks on number
-// --------
-// if the value of the cell === 0 then do reveal function for each neighbour
-// for easier array manipulations we will use object array of {x, y}
-
 // returns grid that is used to update the game display and game status 
 // that is used to check the game progress
-const reveal = (oldGrid: [][], i: number, j: number): {grid: [][], status: string} => {
+interface Cell {
+  value: any,
+  x: number,
+  y: number,
+  flagged: boolean,
+  revealed: boolean
+}
+
+const reveal = (oldGrid: Cell[][], i: number, j: number, mines: number): {grid: Cell[][], status: string} => {
   let newGrid = JSON.parse(JSON.stringify(oldGrid)); // deep copy to work on
   const neighbours = getNeighbours(i, j);
   newGrid[i][j].revealed = true; // reveal the clicked cell
@@ -15,20 +18,20 @@ const reveal = (oldGrid: [][], i: number, j: number): {grid: [][], status: strin
     return {grid: newGrid, status: "X"};
   }
   // check if the cell has neighbours
-  if (newGrid[i][j].value != 0 && newGrid[i][j].value != "X") {
-    return {grid: newGrid, status: "O"};
+  if (newGrid[i][j].value != 0 && newGrid[i][j].value != "X") { 
+    return hasWon(newGrid, mines);
   } 
-
+  
   // if not a mine, iterate throgh neighbours
-  newGrid = revealNeighbours(newGrid, neighbours); 
-
-  return {grid: newGrid, status: "O"};
+  newGrid = revealNeighbours(newGrid, neighbours);
+  
+  return hasWon(newGrid, mines);
 }
 
 // reveal neighbours on passed positions
-const revealNeighbours = (oldGrid: [][], neighbours: {x: number, y: number}[]) => {
-  let newGrid = JSON.parse(JSON.stringify(oldGrid))
-  
+const revealNeighbours = (oldGrid: Cell[][], neighbours: {x: number, y: number}[]) => {
+  let newGrid = JSON.parse(JSON.stringify(oldGrid));
+
   const yBound = newGrid.length;
   const xBound = newGrid[0].length;
 
@@ -48,9 +51,27 @@ const revealNeighbours = (oldGrid: [][], neighbours: {x: number, y: number}[]) =
       newGrid = revealNeighbours(newGrid, newNeighbours);
     } // bound check
     
-  }  
+  }
 
   return newGrid;
+}
+
+const hasWon = (newGrid: Cell[][], mines: number) => {
+  let revealed = 0;
+
+  const yBound = newGrid.length;
+  const xBound = newGrid[0].length;
+
+  for (let i = 0; i < yBound; i++) {
+    for (let j = 0; j < xBound; j++) {
+      revealed += newGrid[i][j].revealed && 1 || 0;
+    }
+  }
+
+  if (revealed >= (yBound * xBound) - mines)
+    return {grid: newGrid, status: "W"};
+
+  return {grid: newGrid, status: "O"};
 }
 
 const getNeighbours = (i: number, j: number): {x: number, y: number}[] => {

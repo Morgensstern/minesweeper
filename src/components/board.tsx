@@ -24,7 +24,7 @@ const Board = ({ rows = 10, cols = 10, mines = 15 }: Props) => {
   }, []);
 
   const handleRightClick = (i: number, j: number) => {
-    if (status === "X") return;
+    if (status === "X" || status === "W") return;
     const newGrid = JSON.parse(JSON.stringify(grid));
     if (!newGrid[i][j].flagged)
       newGrid[i][j].flagged = true;
@@ -34,10 +34,9 @@ const Board = ({ rows = 10, cols = 10, mines = 15 }: Props) => {
   }
 
   const handleLeftClick = (i: number, j: number) =>  {
-    const newGrid = reveal(grid, i, j);
-    if (status === "X") return;
+    const newGrid = reveal(grid, i, j, mines);
+    if (status === "X" || status === "W") return;
 
-    console.log(newGrid.status);
     setStatus(newGrid.status);
     setGrid(newGrid.grid);
   }
@@ -55,7 +54,7 @@ const Board = ({ rows = 10, cols = 10, mines = 15 }: Props) => {
             </div>);
         })}
       </div>
-      <p className='board-status'>{status === "X" && "Game Over!" || ""}</p>
+      <p className={status ==="W" && "board-status-win" || 'board-status-go'}>{status === "X" && "Game Over!" || (status === "W" && "You Win!" || "")}</p>
     </>
   )
 
