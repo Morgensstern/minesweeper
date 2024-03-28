@@ -1,15 +1,36 @@
+:root {
+  --lightgreen: #00CC00;
+  --darkgreen: #009900;
+  --active: #55DD55;
+  --outline: #005500;
+}
+
 .board-cell {
-  background-color: #c0c0c0;
-  border: 5px outset #e0e0e0;
   width: 40px;
   height: 40px;
   font-size: 1.3rem;
   user-select: none;
   font-size: 2rem;
+  border-radius: 5px;
+  border: 1px solid var(--outline);
 }
 
-.cell-active, .board-cell:active {
-  border: 1px solid #b0b0b0;
-  width: 48px;
-  height: 48px;
+.board-row:nth-child(odd) .board-cell:nth-child(odd) {
+  background-color: var(--lightgreen);
+}
+
+.board-row:nth-child(odd) .board-cell:nth-child(even) {
+  background-color: var(--darkgreen);
+}
+
+.board-row:nth-child(even) .board-cell:nth-child(odd) {
+  background-color: var(--darkgreen);
+}
+
+.board-row:nth-child(even) .board-cell:nth-child(even) {
+  background-color: var(--lightgreen);
+}
+
+.board-row > .cell-active, .board-cell:active {
+  background-color: var(--active) !important;
 }

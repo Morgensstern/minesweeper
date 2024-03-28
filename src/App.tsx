@@ -5,7 +5,7 @@ import Board from './components/board';
 function App() {
   return (
     <>
-      <Board />
+      <Board rows={9} cols={9} mines={10} />
     </>
   )
 }

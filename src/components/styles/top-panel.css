@@ -1,0 +1,45 @@
+.panel {
+  display: flex;
+  justify-content: space-around;
+  background-color: #00cc00;
+  padding: 20px 0;
+  border: 2px solid #005500;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.panel-element {
+  display: flex;
+  font-size: 3rem;
+  font-weight: bold;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #55dd55;
+  border: 2px inset #00dd00;
+}
+
+.panel-status {
+  border-radius: 10px;
+  border: 2px outset #00dd00;
+  width: 75px;
+  height: 75px;
+  background-color: #55dd55;
+  font-size: 3rem;
+}
+
+.panel-status:active {
+  border: 2px inset #00dd00;
+}
+
+.board-status-go {
+  color: red;
+  font-weight: bold;
+}
+
+.board-status-win {
+  color: green;
+  font-weight: bold;
+}

@@ -1,26 +1,20 @@
 .board {
-  background-color: #c0c0c0;
+  background-color: #007700;
   display: flex;
-  border: 10px inset #e0e0e0;
   width: fit-content;
-  margin: 20px;
+  margin: 10px;
 }
+
 
 .board-row {
   justify-content: center;
   text-align: center;
 }
 
-.board-status-go {
-  margin-left: 20px;
-  color: red;
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-.board-status-win {
-  margin-left: 20px;
-  color: green;
-  font-weight: bold;
-  font-size: 1.4rem;
+.game {
+  background-color: #007700;
+  width: fit-content;
+  margin: 20px;
+  border: 1px solid #007700;
+  border-radius: 10px;
 }
